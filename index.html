@@ -880,14 +880,53 @@
             observer.observe(el);
         });
 
+        // Supabase configuration
+        const SUPABASE_URL = 'https://hmppbpdtijgvgiyzcmtq.supabase.co';
+        const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhtcHBicGR0aWpndmdpeXpjbXRxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk3MTU5MDAsImV4cCI6MjAyNTI5MTkwMH0.example'; // Replace with your actual anon key
+
         // Waitlist form handling
-        document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+        document.getElementById('waitlist-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             const email = this.querySelector('input[type="email"]').value;
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
             
-            // TODO: Integrate with your email service (Mailchimp, ConvertKit, etc.)
-            alert('Thank you for joining the waitlist! We\'ll notify you when Astra Veil is ready. ✨');
-            this.reset();
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Joining...';
+            submitBtn.disabled = true;
+            
+            try {
+                const response = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                        'Prefer': 'return=minimal'
+                    },
+                    body: JSON.stringify({
+                        email: email,
+                        source: 'astraveil.app',
+                        user_agent: navigator.userAgent
+                    })
+                });
+                
+                if (response.ok) {
+                    alert('✨ Thank you for joining the waitlist! We\'ll notify you when Astra Veil is ready.');
+                    this.reset();
+                } else if (response.status === 409) {
+                    alert('✨ You\'re already on the waitlist! We\'ll be in touch soon.');
+                    this.reset();
+                } else {
+                    throw new Error('Failed to join waitlist');
+                }
+            } catch (error) {
+                console.error('Waitlist error:', error);
+                alert('Something went wrong. Please try again or email us at hello@astraveil.app');
+            } finally {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }
         });
 
         // Smooth scroll for navigation links
