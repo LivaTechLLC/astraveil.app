@@ -153,15 +153,18 @@
         </ul>
         
         <h2>7. Third-Party Services</h2>
-        <p>We use industry-standard third-party services to operate Astra Veil:</p>
+        <p>We use the following third-party services to operate Astra Veil:</p>
         <ul>
-            <li><strong>Cloud Infrastructure:</strong> Secure database and server providers to store and process your data</li>
-            <li><strong>AI Services:</strong> Large language model providers to generate personalized readings and responses</li>
-            <li><strong>Payment Processing:</strong> Apple App Store and subscription management services</li>
-            <li><strong>Analytics:</strong> Privacy-focused analytics to improve app performance (no personal content shared)</li>
+            <li><strong>Supabase (Cloud Infrastructure):</strong> Secure database and server infrastructure to store and process your data (United States)</li>
+            <li><strong>Anthropic (AI Services):</strong> Generates your personalized readings and responses using its Claude models. With each reading request, Anthropic receives your birth chart data, your questions and conversation history, and your saved Profile Facts. Anthropic retains API requests for 30 days for abuse prevention.</li>
+            <li><strong>RevenueCat (Payment Processing):</strong> Manages your premium subscription and entitlements, together with Apple App Store in-app purchases</li>
+            <li><strong>PostHog (Analytics):</strong> Privacy-focused analytics to improve app performance (no message content; we send your account ID, subscription tier, and your Sun, Moon, and Rising signs)</li>
             <li><strong>Authentication:</strong> Apple Sign-In and Google Sign-In services</li>
         </ul>
         <p>All third-party providers are bound by strict data protection agreements and process your data only as necessary to provide their services.</p>
+        
+        <h3>Automatic Profile Facts (Life Context)</h3>
+        <p>As you chat, Astra Veil automatically notes factual details about your life — such as your interests, goals, challenges, family situation, and dated life events. These Profile Facts are stored in your account, used to personalize later readings, and sent to Anthropic with each reading request. You can review and clear every stored fact at any time: Profile → Life Context → Clear All. Details about people you mention (for example family members) may also be stored. No health-related information is extracted or stored.</p>
         
         <h2>8. Data Residency & International Transfers</h2>
         <p>Your data is stored in the United States via Supabase's infrastructure. If you are located outside the US:</p>
