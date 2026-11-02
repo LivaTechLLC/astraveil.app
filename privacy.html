@@ -103,10 +103,11 @@
             <li><strong>Account Information:</strong> Email address (via Apple Sign-In or Google Sign-In)</li>
             <li><strong>Birth Information:</strong> Birth date, time, and location for astrological calculations</li>
             <li><strong>Chat History:</strong> Conversations with our AI astrologer to provide personalized insights</li>
-            <li><strong>Profile Facts:</strong> Information you share during conversations (relationship status, interests, etc.)</li>
-            <li><strong>Device Information:</strong> Push notification tokens, app usage analytics</li>
+            <li><strong>Life Context:</strong> Notes you type and save yourself, such as interests, goals, or other details you want later readings to reflect. We do not note facts automatically from your chat</li>
+            <li><strong>People you add:</strong> For each person, a birthday, an optional birth time, and a city, used to calculate their chart. People you add, and your daily check-ins, are stored locally on your device. A parent can add a child this way; see Children's Privacy</li>
+            <li><strong>Bug Reports:</strong> The message you send, an optional screenshot, the last 100 console log lines, your device model and operating system version, and a push token so we can reply</li>
+            <li><strong>Device Information:</strong> A push notification token if you enable daily forecast notifications. We do not collect app usage analytics</li>
             <li><strong>Subscription Status:</strong> RevenueCat purchase history for entitlement verification</li>
-            <li><strong>Saved on your device:</strong> People you add, and your daily check-ins, are stored locally on your device</li>
         </ul>
         
         <h2>2. How We Use Your Information</h2>
@@ -116,7 +117,8 @@
             <li>Provide AI-powered chat experiences tailored to your cosmic profile</li>
             <li>Send daily forecast notifications (if enabled)</li>
             <li>Process and verify subscription purchases</li>
-            <li>Improve our AI models and app experience</li>
+            <li>Read bug reports you choose to send, and reply to them</li>
+            <li>Improve the app experience</li>
             <li>Communicate important updates about the service</li>
         </ul>
         
@@ -126,8 +128,7 @@
             <li>Chat with our AI guide, Celestia</li>
             <li>Readings synthesis</li>
             <li>Feedback chat</li>
-            <li>A premium classifier</li>
-            <li>A profile-facts extractor</li>
+            <li>Saving the life context you choose to share, so readings can remember it</li>
         </ul>
         <p>Each of these is processed by <strong>Anthropic</strong>, the maker of Claude. The app sends the request through our Supabase edge functions. Anthropic processes that information as a service provider, to produce the result for the feature you used.</p>
 
@@ -138,10 +139,10 @@
             <li><strong>Your name</strong></li>
             <li><strong>Your birth date</strong> and the age derived from it, plus your birth time and birth place if you provided them</li>
             <li><strong>Sun, Moon, and Rising,</strong> your life path number, and your personal year</li>
-            <li><strong>Saved life context</strong></li>
+            <li><strong>Life context you typed and saved</strong></li>
             <li><strong>The date and time on your device,</strong> and the moon phase and retrogrades computed for that moment</li>
             <li><strong>Readings you ask to combine</strong></li>
-            <li><strong>When you ask about someone you added:</strong> that person's name, your relationship to them, and the sun sign and life path derived from their birthday</li>
+            <li><strong>When you ask about someone you added:</strong> that person's name, your relationship to them, their age, and their chart signs. Their calendar birth date is not sent</li>
         </ul>
         <p>Birth-chart calculation is done without AI. It does not use Anthropic.</p>
 
@@ -153,6 +154,7 @@
         <ul>
             <li>Account data is stored on secure cloud infrastructure with encryption</li>
             <li>People you add and your daily check-ins are saved locally on your device</li>
+            <li>Bug reports are stored with your account, including an optional screenshot, the last 100 console log lines, device model and operating system version, and a push token for replies</li>
             <li>Row-level security ensures your data is isolated from other users</li>
             <li>Encryption in transit (TLS) and at rest</li>
             <li>API keys and secrets are stored server-side only</li>
@@ -163,19 +165,19 @@
         <h2>5. Your Rights</h2>
         <p>You have the right to:</p>
         <ul>
-            <li>Access and download your personal data</li>
-            <li>Delete your account and all associated data</li>
+            <li>Delete your account and the data associated with it, including bug reports, optional screenshots, console logs, device model and operating system, and the push token stored so we can reply</li>
             <li>Opt out of push notifications</li>
             <li>Request corrections to your birth information</li>
             <li>Withdraw consent for data processing, including AI data sharing in Settings &gt; AI data sharing</li>
         </ul>
+        <p>There is no data-download or export in the app. Deleting your account does not cancel an App Store subscription. Apple keeps billing that subscription until you cancel it in your Apple ID subscription settings.</p>
         
         <h2>6. Data Retention</h2>
         <p>We retain your data as follows:</p>
         <ul>
             <li>Account data: Until you delete your account</li>
-            <li>Chat history: 90 days (rolling deletion)</li>
-            <li>Anonymized analytics: Indefinitely for product improvement</li>
+            <li>Chat history and saved readings: kept on our servers until you delete your account. The app shows the last 7 days of history on free accounts and the last 365 days on premium accounts</li>
+            <li>Bug reports, including an optional screenshot, the last 100 console log lines, device model and operating system, and the push token used to reply: removed when you delete your account</li>
             <li>Subscription records: 7 years (tax/legal requirements)</li>
         </ul>
         
@@ -183,15 +185,15 @@
         <p>We use the following third-party services to operate Astra Veil:</p>
         <ul>
             <li><strong>Supabase (Backend and Authentication):</strong> Database, sign-in, and edge functions. AI requests are sent to Anthropic through these edge functions. Account data is stored in the United States</li>
-            <li><strong>Anthropic (AI Services):</strong> Processes Celestia chat, readings synthesis, feedback chat, the premium classifier, and the profile-facts extractor, as a service provider. Section 3 describes the purpose, what is sent, and how to give or withdraw consent</li>
+            <li><strong>Anthropic (AI Services):</strong> Processes Celestia chat, readings synthesis, feedback chat, and life-context saving, as a service provider, and only after you consent. Section 3 describes the purpose, what is sent, and how to give or withdraw consent</li>
             <li><strong>RevenueCat (Payment Processing):</strong> Manages your premium subscription and entitlements, together with Apple App Store in-app purchases</li>
-            <li><strong>PostHog (Analytics):</strong> Privacy-focused analytics to improve app performance (no message content; we send your account ID, subscription tier, and your Sun, Moon, and Rising signs)</li>
+            <li><strong>Analytics:</strong> We do not use third-party analytics. The production app does not include an analytics key, so no analytics service runs</li>
             <li><strong>Authentication:</strong> Apple Sign-In and Google Sign-In services</li>
         </ul>
         <p>All third-party providers are bound by strict data protection agreements and process your data only as necessary to provide their services.</p>
         
-        <h3>Automatic Profile Facts (Life Context)</h3>
-        <p>As you chat, Astra Veil automatically notes factual details about your life — such as your interests, goals, challenges, family situation, and dated life events. These Profile Facts are stored in your account, used to personalize later readings, and sent to Anthropic with each reading request. You can review and clear every stored fact at any time: Profile → Life Context → Clear All. Details about people you mention (for example family members) may also be stored. No health-related information is extracted or stored.</p>
+        <h3>Life Context</h3>
+        <p>Life context is saved when you type it. Astra Veil does not note facts automatically as you chat. What you save is stored in your account, used to personalize later readings, and sent to Anthropic with a reading request after you consent. You can review and clear every stored fact at any time: Profile → Life Context → Clear All.</p>
         
         <h2>8. Data Residency & International Transfers</h2>
         <p>Your data is stored in the United States via Supabase's infrastructure. If you are located outside the US:</p>
@@ -203,7 +205,8 @@
         </ul>
         
         <h2>9. Children's Privacy</h2>
-        <p>Astra Veil is not intended for children under 13. We do not knowingly collect data from children under 13. If you believe we have collected data from a child under 13, please contact us immediately.</p>
+        <p>Astra Veil accounts are for people 13 and older. You must be at least 13 years of age to create an account, which is the same rule as our <a href="/terms">Terms of Service</a>. We do not knowingly allow a child under 13 to create an account. If you believe a child under 13 has created one, please contact us immediately.</p>
+        <p>A parent, or another account holder, can add other people, including a child. That person's chart is calculated from the birthday, an optional birth time, and a city. If the birthday is under 18, readings about that person are instructed to stay age-appropriate and to speak to the adult. The calendar birth date is not sent to the AI. We send that person's name, their age, your relationship to them, and their chart signs.</p>
         
         <h2>10. Changes to This Policy</h2>
         <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new policy on this page and updating the "Last Updated" date.</p>
