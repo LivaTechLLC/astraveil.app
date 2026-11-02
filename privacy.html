@@ -118,7 +118,7 @@
             <li>Send daily forecast notifications (if enabled)</li>
             <li>Process and verify subscription purchases</li>
             <li>Read bug reports you choose to send, and reply to them</li>
-            <li>Improve our AI models and app experience</li>
+            <li>Improve the app experience</li>
             <li>Communicate important updates about the service</li>
         </ul>
         
@@ -128,7 +128,7 @@
             <li>Chat with our AI guide, Celestia</li>
             <li>Readings synthesis</li>
             <li>Feedback chat</li>
-            <li>A premium classifier</li>
+            <li>Saving the life context you choose to share, so readings can remember it</li>
         </ul>
         <p>Each of these is processed by <strong>Anthropic</strong>, the maker of Claude. The app sends the request through our Supabase edge functions. Anthropic processes that information as a service provider, to produce the result for the feature you used.</p>
 
@@ -176,7 +176,7 @@
         <p>We retain your data as follows:</p>
         <ul>
             <li>Account data: Until you delete your account</li>
-            <li>Chat history: 7 days for free accounts and 365 days for premium accounts. Deleting your account removes it as well</li>
+            <li>Chat history and saved readings: kept on our servers until you delete your account. The app shows the last 7 days of history on free accounts and the last 365 days on premium accounts</li>
             <li>Bug reports, including an optional screenshot, the last 100 console log lines, device model and operating system, and the push token used to reply: removed when you delete your account</li>
             <li>Subscription records: 7 years (tax/legal requirements)</li>
         </ul>
@@ -185,7 +185,7 @@
         <p>We use the following third-party services to operate Astra Veil:</p>
         <ul>
             <li><strong>Supabase (Backend and Authentication):</strong> Database, sign-in, and edge functions. AI requests are sent to Anthropic through these edge functions. Account data is stored in the United States</li>
-            <li><strong>Anthropic (AI Services):</strong> Processes Celestia chat, readings synthesis, feedback chat, and the premium classifier, as a service provider, and only after you consent. Section 3 describes the purpose, what is sent, and how to give or withdraw consent</li>
+            <li><strong>Anthropic (AI Services):</strong> Processes Celestia chat, readings synthesis, feedback chat, and life-context saving, as a service provider, and only after you consent. Section 3 describes the purpose, what is sent, and how to give or withdraw consent</li>
             <li><strong>RevenueCat (Payment Processing):</strong> Manages your premium subscription and entitlements, together with Apple App Store in-app purchases</li>
             <li><strong>Analytics:</strong> We do not use third-party analytics. The production app does not include an analytics key, so no analytics service runs</li>
             <li><strong>Authentication:</strong> Apple Sign-In and Google Sign-In services</li>
